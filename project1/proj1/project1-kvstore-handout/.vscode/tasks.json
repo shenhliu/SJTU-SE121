@@ -1,0 +1,43 @@
+{
+    "version": "2.0.0",
+    "tasks": [{
+            "label": "Build kvstore", //
+            "type": "shell",
+            "command": "g++",
+            "args": [
+                "-g",
+                "-std=c++17",
+                "-o",
+                "kvstore",
+                "correctness.cc",
+                //"persistence.cc",
+                "test.h",
+                "kvstore_api.h",
+                "skiplist.cc",
+                "kvstore.cc", //
+                "QuadlistNode.h",
+                "IndexNode.h",
+                "ScanNode.h",
+                "TableNode.h"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": [
+                "$gcc"
+            ]
+        },
+        {
+            "label": "Run kvstore", //
+            "type": "shell",
+            "command": "${workspaceRoot}/kvstore", //
+            "args": [],
+            "dependsOn": "Build kvstore", //
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            }
+        }
+    ]
+}
